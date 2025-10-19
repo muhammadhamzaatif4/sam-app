@@ -13,17 +13,17 @@ parallel = true
 [default.validate.parameters]
 lint = true
 
+[default.package.parameters]
+# Removed resolve_s3 to avoid conflict with GitHub Actions (pipeline provides its own s3 bucket)
+
 [default.deploy.parameters]
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
-resolve_s3 = false
 s3_prefix = "sam-app"
 region = "us-east-1"
 disable_rollback = true
 image_repositories = []
-
-[default.package.parameters]
-resolve_s3 = true
+# Removed resolve_s3 to prevent duplication since pipeline already sets --s3-bucket
 
 [default.sync.parameters]
 watch = true
